@@ -1,0 +1,171 @@
+[package]
+name = "webpack-symbols"
+version = "0.1.0"
+edition = "2021"
+description = "Extract, compare, and transpose symbols from webpack bundles"
+license = "MIT"
+
+[dependencies]
+# JavaScript parsing - use absolute latest versions
+swc_ecma_parser = "30"
+swc_ecma_ast = "19"
+swc_ecma_visit = "19"
+swc_common = { version = "18", features = ["sourcemap"] }
+swc_ecma_codegen = "21"
+
+# SQLite
+rusqlite = { version = "0.32", features = ["bundled", "serde_json"] }
+
+# CLI
+clap = { version = "4.5", features = ["derive"] }
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# Error handling
+anyhow = "1.0"
+thiserror = "1.0"
+
+# Hashing
+sha2 = "0.10"
+
+# Diffing
+similar = "2.6"
+
+# Misc
+chrono = { version = "0.4", features = ["serde"] }
+hex = "0.4"
+regex = "1.10"
+
+# HTTP client for Anthropic API
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls"] }
+tokio = { version = "1", features = ["full"] }
+
+[[bin]]
+name = "bench_parse"
+path = "src/bin/bench_parse.rs"
+
+[[bin]]
+name = "bench_extract"
+path = "src/bin/bench_extract.rs"
+
+[[bin]]
+name = "db_stats"
+path = "src/bin/db_stats.rs"
+
+[[bin]]
+name = "analyze_minified"
+path = "src/bin/analyze_minified.rs"
+
+[[bin]]
+name = "find_ul"
+path = "src/bin/find_ul.rs"
+
+[[bin]]
+name = "find_runtime"
+path = "src/bin/find_runtime.rs"
+
+[[bin]]
+name = "analyze_runtime"
+path = "src/bin/analyze_runtime.rs"
+
+[[bin]]
+name = "list_lazy_modules"
+path = "src/bin/list_lazy_modules.rs"
+
+[[bin]]
+name = "trace_modules"
+path = "src/bin/trace_modules.rs"
+
+[[bin]]
+name = "parse_modules"
+path = "src/bin/parse_modules.rs"
+
+[[bin]]
+name = "identify_libs"
+path = "src/bin/identify_libs.rs"
+
+[[bin]]
+name = "find_identifiable"
+path = "src/bin/find_identifiable.rs"
+
+[[bin]]
+name = "identify_specific"
+path = "src/bin/identify_specific.rs"
+
+[[bin]]
+name = "build_lu_map"
+path = "src/bin/build_lu_map.rs"
+
+[[bin]]
+name = "identify_with_context"
+path = "src/bin/identify_with_context.rs"
+
+[[bin]]
+name = "save_identifications"
+path = "src/bin/save_identifications.rs"
+
+[[bin]]
+name = "dump_unidentified"
+path = "src/bin/dump_unidentified.rs"
+
+[[bin]]
+name = "batch_identify"
+path = "src/bin/batch_identify.rs"
+
+[[bin]]
+name = "dump_modules"
+path = "src/bin/dump_modules.rs"
+
+[[bin]]
+name = "dump_paired"
+path = "src/bin/dump_paired.rs"
+
+[[bin]]
+name = "analyze_order"
+path = "src/bin/analyze_order.rs"
+
+[[bin]]
+name = "build_dag"
+path = "src/bin/build_dag.rs"
+
+[[bin]]
+name = "categorize_app"
+path = "src/bin/categorize_app.rs"
+
+[[bin]]
+name = "dag_refined"
+path = "src/bin/dag_refined.rs"
+
+[[bin]]
+name = "dag_backward"
+path = "src/bin/dag_backward.rs"
+
+[[bin]]
+name = "match_signatures"
+path = "src/bin/match_signatures.rs"
+
+[[bin]]
+name = "reconstruct_names"
+path = "src/bin/reconstruct_names.rs"
+
+[[bin]]
+name = "organize_modules"
+path = "src/bin/organize_modules.rs"
+
+[[bin]]
+name = "analyze_l_deps"
+path = "src/bin/analyze_l_deps.rs"
+
+[[bin]]
+name = "dump_modules_v2"
+path = "src/bin/dump_modules_v2.rs"
+
+[[bin]]
+name = "deobfuscate_ast"
+path = "src/bin/deobfuscate_ast.rs"
+
+[profile.release]
+lto = true
+codegen-units = 1
